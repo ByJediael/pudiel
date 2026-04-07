@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pudim Atelier | Pudim Gourmet para Eventos</title>
+  <meta
+    name="description"
+    content="Pudim gourmet para casamentos, aniversarios e eventos corporativos. Estacoes elegantes, sabor artesanal e experiencia premium."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --paper: #fffdf9;
+      --ink: #1f1b16;
+      --muted: #6c6258;
+      --caramel: #9c5e2d;
+      --gold: #d9b06b;
+      --line: #e6dbcf;
+      --radius: 20px;
+      --shadow: 0 16px 40px rgba(31, 27, 22, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "DM Sans", Arial, sans-serif;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 3rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(247, 244, 239, 0.75);
+      border-bottom: 1px solid var(--line);
+      z-index: 30;
+    }
+
+    .topbar-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .brand span {
+      color: var(--caramel);
+    }
+
+    .nav {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--ink);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.8rem 1.35rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: #111;
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      color: var(--ink);
+      background: rgba(255, 253, 249, 0.7);
+    }
+
+    .btn-ghost:hover {
+      border-color: #cdbda9;
+    }
+
+    .hero {
+      padding: 5.5rem 0 4.5rem;
+    }
+
+    .eyebrow {
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--caramel);
+      font-size: 0.78rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      line-height: 1.05;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 6vw, 4.4rem);
+      max-width: 12ch;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero p {
+      max-width: 58ch;
+      color: var(--muted);
+      font-size: 1.07rem;
+      line-height: 1.7;
+      margin-bottom: 1.7rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .metrics {
+      margin-top: 2.3rem;
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .hero-copy {
+      grid-column: span 7;
+    }
+
+    .hero-card {
+      grid-column: span 5;
+      background: radial-gradient(circle at 30% 25%, #ffe7bf, #f4c98f 35%, #d18447 60%, #a86333);
+      min-height: 440px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -8% -25% -8%;
+      height: 65%;
+      background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.28), transparent 60%);
+    }
+
+    .hero-card-badge {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      background: rgba(31, 27, 22, 0.8);
+      color: #fff;
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-card-copy {
+      position: absolute;
+      left: 1.25rem;
+      bottom: 1.25rem;
+      background: rgba(255, 253, 249, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      max-width: 75%;
+    }
+
+    .hero-card-copy strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+
+    section {
+      padding: 4.8rem 0;
+    }
+
+    .section-head {
+      margin-bottom: 1.8rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 3.6vw, 3rem);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 60ch;
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--paper);
+      padding: 1.35rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .scroll-showcase {
+      padding: 0;
+      position: relative;
+      min-height: 190vh;
+    }
+
+    .sticky-wrap {
+      position: sticky;
+      top: 78px;
+      min-height: calc(100vh - 78px);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #f8f2e7 0%, #f5eee2 44%, #f7f4ef 100%);
+    }
+
+    .pudim-stage {
+      width: min(920px, 94vw);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1rem;
+    }
+
+    .pudim-visual {
+      position: relative;
+      height: min(58vh, 500px);
+      display: grid;
+      place-items: center;
+    }
+
+    .pudim-video {
+      width: min(460px, 82vw);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      box-shadow: 0 24px 48px rgba(31, 27, 22, 0.2);
+      background: #f3e7d8;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+    }
+
+    .pudim-plate {
+      width: min(440px, 76vw);
+      aspect-ratio: 1.2 / 1;
+      border-radius: 999px;
+      background: radial-gradient(circle at 50% 35%, #ffffff 18%, #f1ebe2 66%, #ddd1c4 100%);
+      box-shadow: inset 0 6px 12px rgba(255, 255, 255, 0.5),
+        inset 0 -12px 18px rgba(108, 98, 88, 0.15);
+      display: grid;
+      place-items: center;
+    }
+
+    .pudim-orb {
+      width: min(250px, 50vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 25%, #ffddac 0%, #f5bd70 35%, #ce803e 68%, #9a572e 100%);
+      box-shadow: 0 24px 45px rgba(92, 49, 22, 0.3),
+        inset 0 -18px 26px rgba(104, 48, 16, 0.18),
+        inset 0 10px 18px rgba(255, 255, 255, 0.25);
+      position: relative;
+      transform: translateY(0) scale(1) rotate(0deg);
+    }
+
+    .pudim-orb::before {
+      content: "";
+      position: absolute;
+      left: 20%;
+      top: 13%;
+      width: 48%;
+      height: 24%;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.28);
+      filter: blur(1px);
+    }
+
+    .pudim-orb::after {
+      content: "";
+      position: absolute;
+      right: 12%;
+      bottom: 8%;
+      width: 22%;
+      height: 12%;
+      border-radius: 999px;
+      background: rgba(63, 29, 9, 0.35);
+      filter: blur(5px);
+    }
+
+    .showcase-copy {
+      background: rgba(255, 253, 249, 0.82);
+      border: 1px solid #ece1d5;
+      border-radius: 16px;
+      padding: 1.2rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .showcase-copy h3 {
+      font-size: 1.65rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .showcase-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .steps {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .step {
+      border-radius: 16px;
+      border: 1px dashed #d9cab8;
+      padding: 1rem;
+      background: rgba(255, 253, 249, 0.65);
+    }
+
+    .step strong {
+      color: var(--caramel);
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    blockquote {
+      margin: 0;
+      padding: 1.4rem;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffdfa;
+      color: #443a31;
+      line-height: 1.65;
+    }
+
+    blockquote footer {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .cta {
+      border-top: 1px solid var(--line);
+      padding: 4.5rem 0 5.2rem;
+    }
+
+    .cta-box {
+      border-radius: var(--radius);
+      background: linear-gradient(140deg, #1f1b16 0%, #36281f 100%);
+      color: #f7efe6;
+      padding: clamp(1.4rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 0.8rem;
+    }
+
+    .cta p {
+      margin: 0;
+      color: #e5d6c6;
+      line-height: 1.65;
+      max-width: 48ch;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      justify-content: flex-end;
+    }
+
+    .btn-light {
+      background: #f7efe3;
+      color: #201810;
+    }
+
+    .btn-light:hover {
+      background: #fff7eb;
+    }
+
+    .btn-outline-light {
+      border-color: rgba(255, 255, 255, 0.35);
+      color: #f8ead7;
+    }
+
+    .btn-outline-light:hover {
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    footer {
+      padding: 1.5rem 0 2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 980px) {
+      .hero-copy,
+      .hero-card,
+      .services .card,
+      .cta-box > * {
+        grid-column: span 12;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .split,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .pudim-stage {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      .showcase-copy {
+        max-width: 680px;
+        margin: 0 auto;
+      }
+
+      .steps,
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(1120px, calc(100% - 1.4rem));
+      }
+
+      .topbar-inner {
+        min-height: 64px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 4.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#inicio">Pudim <span>Atelier</span></a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#eventos">Eventos</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container split">
+        <div class="hero-copy">
+          <p class="eyebrow">Pudim gourmet para momentos especiais</p>
+          <h1>Elegância artesanal para o seu evento.</h1>
+          <p>
+            Criamos estações de pudim gourmet para casamentos, aniversários, confraternizações e eventos
+            corporativos. Uma experiência sensorial minimalista, sofisticada e inesquecível para os seus convidados.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contato">Quero um orçamento</a>
+            <a class="btn btn-ghost" href="#eventos">Ver formatos de evento</a>
+          </div>
+          <div class="metrics">
+            <span class="pill">Ingredientes selecionados</span>
+            <span class="pill">Montagem no local</span>
+            <span class="pill">Atendimento premium</span>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Destaque visual do pudim gourmet">
+          <span class="hero-card-badge">Gourmet</span>
+          <div class="hero-card-copy">
+            <strong>Assinatura da casa</strong>
+            Pudim sedoso com calda de caramelo dourado e finalização delicada no serviço.
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="eventos">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Formatos de atendimento</p>
+          <h2>Estações pensadas para cada ocasião.</h2>
+          <p>
+            Ajustamos estilo, porções e apresentação conforme o perfil do evento. O foco é unir estética, praticidade
+            e sabor com uma execução impecável.
+          </p>
+        </div>
+        <div class="services">
+          <article class="card">
+            <h3>Casamentos</h3>
+            <p>
+              Montagem elegante para harmonizar com a decoração, serviço fluido e apresentação sofisticada para o
+              grande dia.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Aniversários</h3>
+            <p>
+              Estação descontraída e charmosa, com porções individuais e opção de mesa temática para celebrar com
+              personalidade.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Corporativos</h3>
+            <p>
+              Solução premium para eventos de marca, lançamentos e confraternizações, com operação eficiente e visual
+              refinado.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="scroll-showcase" id="experiencia" aria-label="Demonstração com movimento no scroll">
+      <div class="sticky-wrap">
+        <div class="pudim-stage">
+          <div class="pudim-visual">
+            <video
+              class="pudim-video"
+              id="pudimVideo"
+              muted
+              playsinline
+              preload="metadata"
+              poster="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80"
+            >
+              <source src="assets/videos/Luxury_Pudim_Animation_Generation.mp4" type="video/mp4" />
+              Seu navegador não suporta vídeo em HTML5.
+            </video>
+          </div>
+          <div class="showcase-copy">
+            <p class="eyebrow">Experiência visual</p>
+            <h3>Movimento suave no scroll, estilo editorial.</h3>
+            <p>
+              Esta seção simula a linguagem de sites premium: ao rolar a página, o produto ganha profundidade e leve
+              rotação, criando uma percepção sofisticada sem perder o minimalismo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Como funciona</p>
+          <h2>Do briefing ao último convidado.</h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <strong>01 • Briefing</strong>
+            <p>Entendemos o tipo de evento, quantidade de pessoas e estilo da montagem.</p>
+          </div>
+          <div class="step">
+            <strong>02 • Curadoria</strong>
+            <p>Definimos sabores, apresentação e operação de serviço alinhados ao seu conceito.</p>
+          </div>
+          <div class="step">
+            <strong>03 • Execução</strong>
+            <p>Chegamos no horário, montamos a estação e entregamos uma experiência impecável.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="depoimentos">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Quem já provou</p>
+          <h2>Depoimentos que valem mais do que anúncio.</h2>
+        </div>
+        <div class="testimonials">
+          <blockquote>
+            “Foi a atração mais comentada do casamento. Visual impecável e sabor inesquecível.”
+            <footer>— Mariana e Felipe, noivos</footer>
+          </blockquote>
+          <blockquote>
+            “Trouxe sofisticação para o evento da empresa sem perder a praticidade. Equipe excelente.”
+            <footer>— Carla M., coordenadora de marketing</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contato">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <p class="eyebrow">Vamos criar sua estação gourmet</p>
+            <h2>Peça uma proposta personalizada.</h2>
+            <p>
+              Nos conte o tipo de evento, data e número de convidados. Retornamos com formato ideal, sugestão de
+              serviço e investimento.
+            </p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-light" href="https://wa.me/5500000000000" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a class="btn btn-outline-light" href="mailto:contato@pudimatelier.com.br">E-mail</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Pudim Atelier • Pudim gourmet para casamentos, aniversarios e eventos corporativos.
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const orb = document.getElementById("pudimOrb");
+      const video = document.getElementById("pudimVideo");
+      const section = document.getElementById("experiencia");
+      if (!section) return;
+
+      let videoReady = false;
+
+      if (video) {
+        // Required by some browsers so currentTime can be controlled.
+        video.addEventListener("loadedmetadata", () => {
+          videoReady = Number.isFinite(video.duration) && video.duration > 0;
+        });
+      }
+
+      const update = () => {
+        const rect = section.getBoundingClientRect();
+        const total = section.offsetHeight - window.innerHeight;
+        const traveled = Math.min(Math.max(-rect.top, 0), Math.max(total, 1));
+        const progress = traveled / Math.max(total, 1);
+
+        if (videoReady && video) {
+          const targetTime = progress * video.duration;
+          if (Number.isFinite(targetTime)) {
+            video.currentTime = targetTime;
+          }
+        } else if (orb) {
+          const rotate = -14 + progress * 30;
+          const scale = 0.92 + progress * 0.2;
+          const translateY = 14 - progress * 32;
+          orb.style.transform = `translateY(${translateY}px) scale(${scale}) rotate(${rotate}deg)`;
+        }
+      };
+
+      update();
+      window.addEventListener("scroll", update, { passive: true });
+      window.addEventListener("resize", update);
+    })();
+  </script>
+</body>
+</html>
