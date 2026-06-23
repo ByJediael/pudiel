@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "serve dist -p $PORT"
+    "start": "serve dist"
   },
   "dependencies": {
     "serve": "^14.2.6"
