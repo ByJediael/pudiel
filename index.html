@@ -3,11 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pudim Atelier | Pudim Gourmet para Eventos</title>
+  <title>Pudiel | Pudim Gourmet para Eventos</title>
   <meta
     name="description"
-    content="Pudim gourmet para casamentos, aniversarios e eventos corporativos. Estacoes elegantes, sabor artesanal e experiencia premium."
+    content="Pudim gourmet para casamentos, aniversários e eventos corporativos. Estações elegantes, sabor artesanal e experiência premium."
   />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pudiel | Pudim Gourmet para Eventos" />
+  <meta property="og:description" content="Estações de pudim gourmet para casamentos, aniversários e eventos corporativos. Experiência premium e inesquecível." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/carrinho-noite-cozy.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -51,6 +62,7 @@
       margin: 0 auto;
     }
 
+    /* ── Topbar ── */
     .topbar {
       position: sticky;
       top: 0;
@@ -97,6 +109,72 @@
       color: var(--ink);
     }
 
+    /* ── Hamburger ── */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 50;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ── Mobile Nav Overlay ── */
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      background: rgba(247, 244, 239, 0.97);
+      backdrop-filter: blur(20px);
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-nav a {
+      text-decoration: none;
+      font-family: "Playfair Display", serif;
+      font-size: 1.6rem;
+      color: var(--ink);
+      transition: color 0.2s ease;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--caramel);
+    }
+
+    /* ── Buttons ── */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -107,6 +185,7 @@
       border: 1px solid transparent;
       transition: all 0.25s ease;
       font-weight: 500;
+      font-size: 0.95rem;
     }
 
     .btn-primary {
@@ -129,6 +208,7 @@
       border-color: #cdbda9;
     }
 
+    /* ── Hero ── */
     .hero {
       padding: 5.5rem 0 4.5rem;
     }
@@ -152,7 +232,7 @@
 
     h1 {
       font-size: clamp(2.3rem, 6vw, 4.4rem);
-      max-width: 12ch;
+      max-width: 14ch;
       margin-bottom: 1.2rem;
     }
 
@@ -186,6 +266,11 @@
       background: rgba(255, 255, 255, 0.65);
     }
 
+    .pill strong {
+      color: var(--caramel);
+      font-weight: 700;
+    }
+
     .split {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -199,21 +284,13 @@
 
     .hero-card {
       grid-column: span 5;
-      background: radial-gradient(circle at 30% 25%, #ffe7bf, #f4c98f 35%, #d18447 60%, #a86333);
+      background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45)), url('assets/images/carrinho-tarde.jpg') center bottom/cover no-repeat;
       min-height: 440px;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
       isolation: isolate;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: auto -8% -25% -8%;
-      height: 65%;
-      background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.28), transparent 60%);
     }
 
     .hero-card-badge {
@@ -247,6 +324,7 @@
       color: var(--ink);
     }
 
+    /* ── Sections ── */
     section {
       padding: 4.8rem 0;
     }
@@ -267,6 +345,7 @@
       line-height: 1.65;
     }
 
+    /* ── Services Cards ── */
     .services {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -281,6 +360,14 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
     }
 
+    .card-image {
+      height: 190px;
+      border-radius: calc(var(--radius) - 8px);
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 1.2rem;
+    }
+
     .card h3 {
       font-size: 1.25rem;
       margin-bottom: 0.6rem;
@@ -292,10 +379,11 @@
       line-height: 1.6;
     }
 
+    /* ── Scroll Showcase ── */
     .scroll-showcase {
       padding: 0;
       position: relative;
-      min-height: 190vh;
+      min-height: 140vh;
     }
 
     .sticky-wrap {
@@ -326,61 +414,37 @@
       place-items: center;
     }
 
-    .pudim-video {
+    .pudim-image-container {
+      position: relative;
       width: min(460px, 82vw);
+      aspect-ratio: 4 / 3;
       border-radius: 18px;
+      overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.75);
       box-shadow: 0 24px 48px rgba(31, 27, 22, 0.2);
-      background: #f3e7d8;
+    }
+
+    .pudim-img-wrapper {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .pudim-img-wrapper img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      aspect-ratio: 16 / 9;
     }
 
-    .pudim-plate {
-      width: min(440px, 76vw);
-      aspect-ratio: 1.2 / 1;
-      border-radius: 999px;
-      background: radial-gradient(circle at 50% 35%, #ffffff 18%, #f1ebe2 66%, #ddd1c4 100%);
-      box-shadow: inset 0 6px 12px rgba(255, 255, 255, 0.5),
-        inset 0 -12px 18px rgba(108, 98, 88, 0.15);
-      display: grid;
-      place-items: center;
+    .img-over {
+      transition: clip-path 0.05s ease-out;
+      clip-path: inset(0 0 0 0);
+      z-index: 2;
     }
-
-    .pudim-orb {
-      width: min(250px, 50vw);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 25%, #ffddac 0%, #f5bd70 35%, #ce803e 68%, #9a572e 100%);
-      box-shadow: 0 24px 45px rgba(92, 49, 22, 0.3),
-        inset 0 -18px 26px rgba(104, 48, 16, 0.18),
-        inset 0 10px 18px rgba(255, 255, 255, 0.25);
-      position: relative;
-      transform: translateY(0) scale(1) rotate(0deg);
-    }
-
-    .pudim-orb::before {
-      content: "";
-      position: absolute;
-      left: 20%;
-      top: 13%;
-      width: 48%;
-      height: 24%;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.28);
-      filter: blur(1px);
-    }
-
-    .pudim-orb::after {
-      content: "";
-      position: absolute;
-      right: 12%;
-      bottom: 8%;
-      width: 22%;
-      height: 12%;
-      border-radius: 999px;
-      background: rgba(63, 29, 9, 0.35);
-      filter: blur(5px);
+    
+    .img-under {
+      z-index: 1;
     }
 
     .showcase-copy {
@@ -402,6 +466,85 @@
       line-height: 1.65;
     }
 
+    /* ── Filmstrip Gallery ── */
+    .filmstrip {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.5rem;
+      scrollbar-width: none;
+    }
+
+    .filmstrip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filmstrip-item {
+      flex: 0 0 calc(33.333% - 0.5rem);
+      scroll-snap-align: start;
+      border-radius: calc(var(--radius) - 4px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .filmstrip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .filmstrip-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .filmstrip-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 1rem 0.85rem;
+      background: linear-gradient(to top, rgba(31, 27, 22, 0.6) 0%, transparent 100%);
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .filmstrip-item:hover .filmstrip-caption {
+      opacity: 1;
+    }
+
+    .filmstrip-caption span {
+      font-family: "Playfair Display", serif;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .filmstrip-hint {
+      text-align: center;
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+    }
+
+    .filmstrip-hint svg {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+      margin-right: 0.3rem;
+      stroke: var(--muted);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ── Steps (Como Funciona) ── */
     .steps {
       margin-top: 2rem;
       display: grid;
@@ -412,8 +555,28 @@
     .step {
       border-radius: 16px;
       border: 1px dashed #d9cab8;
-      padding: 1rem;
+      padding: 1.35rem;
       background: rgba(255, 253, 249, 0.65);
+    }
+
+    .step-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(156, 94, 45, 0.08) 0%, rgba(217, 176, 107, 0.15) 100%);
+      display: grid;
+      place-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .step-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--caramel);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     .step strong {
@@ -432,6 +595,7 @@
       line-height: 1.5;
     }
 
+    /* ── Testimonials ── */
     .testimonials {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -454,6 +618,7 @@
       font-size: 0.92rem;
     }
 
+    /* ── CTA ── */
     .cta {
       border-top: 1px solid var(--line);
       padding: 4.5rem 0 5.2rem;
@@ -507,13 +672,49 @@
       border-color: rgba(255, 255, 255, 0.7);
     }
 
-    footer {
-      padding: 1.5rem 0 2rem;
+    /* ── Footer ── */
+    .site-footer {
+      padding: 2.5rem 0 2rem;
       color: var(--muted);
       font-size: 0.9rem;
       border-top: 1px solid var(--line);
     }
 
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--ink);
+    }
+
+    .footer-links svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* ── Responsive ── */
     @media (max-width: 980px) {
       .hero-copy,
       .hero-card,
@@ -541,6 +742,10 @@
         margin: 0 auto;
       }
 
+      .filmstrip-item {
+        flex: 0 0 calc(50% - 0.375rem);
+      }
+
       .steps,
       .testimonials {
         grid-template-columns: 1fr;
@@ -564,22 +769,57 @@
         display: none;
       }
 
+      .hamburger {
+        display: flex;
+      }
+
       .hero {
         padding-top: 4.2rem;
+      }
+
+      .filmstrip-item {
+        flex: 0 0 75%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#inicio" onclick="closeMobileNav()">Início</a>
+    <a href="#eventos" onclick="closeMobileNav()">Eventos</a>
+    <a href="#experiencia" onclick="closeMobileNav()">Experiência</a>
+    <a href="#galeria" onclick="closeMobileNav()">Galeria</a>
+    <a href="#depoimentos" onclick="closeMobileNav()">Depoimentos</a>
+    <a href="#contato" onclick="closeMobileNav()">Contato</a>
+  </div>
+
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#inicio">Pudim <span>Atelier</span></a>
+      <a class="brand" href="#inicio" style="display: flex; align-items: center;">
+        <img src="assets/images/logo.png" alt="Pudiel" style="height: 64px;" />
+      </a>
       <nav class="nav" aria-label="Navegação principal">
         <a href="#eventos">Eventos</a>
         <a href="#experiencia">Experiência</a>
+        <a href="#galeria">Galeria</a>
         <a href="#depoimentos">Depoimentos</a>
         <a href="#contato">Contato</a>
       </nav>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <a class="btn btn-primary" href="#contato">Solicitar proposta</a>
     </div>
   </header>
@@ -589,27 +829,23 @@
       <div class="container split">
         <div class="hero-copy">
           <p class="eyebrow">Pudim gourmet para momentos especiais</p>
-          <h1>Elegância artesanal para o seu evento.</h1>
+          <h1>O pudim que transforma seu evento em experiência.</h1>
           <p>
             Criamos estações de pudim gourmet para casamentos, aniversários, confraternizações e eventos
             corporativos. Uma experiência sensorial minimalista, sofisticada e inesquecível para os seus convidados.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contato">Quero um orçamento</a>
+            <a class="btn btn-primary" href="https://wa.me/5561991711499" target="_blank" rel="noreferrer">Quero um orçamento</a>
             <a class="btn btn-ghost" href="#eventos">Ver formatos de evento</a>
           </div>
           <div class="metrics">
-            <span class="pill">Ingredientes selecionados</span>
-            <span class="pill">Montagem no local</span>
-            <span class="pill">Atendimento premium</span>
+            <span class="pill"><strong>+100</strong>&nbsp;eventos realizados</span>
+            <span class="pill">⭐ Avaliação 5.0</span>
+            <span class="pill">Atendimento personalizado</span>
           </div>
         </div>
         <aside class="hero-card" aria-label="Destaque visual do pudim gourmet">
           <span class="hero-card-badge">Gourmet</span>
-          <div class="hero-card-copy">
-            <strong>Assinatura da casa</strong>
-            Pudim sedoso com calda de caramelo dourado e finalização delicada no serviço.
-          </div>
         </aside>
       </div>
     </section>
@@ -626,6 +862,7 @@
         </div>
         <div class="services">
           <article class="card">
+            <div class="card-image" style="background-image: url('assets/images/casamentos.jpg');" aria-label="Carrinho Pudiel decorado para casamento"></div>
             <h3>Casamentos</h3>
             <p>
               Montagem elegante para harmonizar com a decoração, serviço fluido e apresentação sofisticada para o
@@ -633,6 +870,7 @@
             </p>
           </article>
           <article class="card">
+            <div class="card-image" style="background-image: url('assets/images/carrinho-noite-cozy.jpg');" aria-label="Estação Pudiel iluminada à noite"></div>
             <h3>Aniversários</h3>
             <p>
               Estação descontraída e charmosa, com porções individuais e opção de mesa temática para celebrar com
@@ -640,6 +878,7 @@
             </p>
           </article>
           <article class="card">
+            <div class="card-image" style="background-image: url('assets/images/corporativos.jpg');" aria-label="Menu de evento personalizado Pudiel"></div>
             <h3>Corporativos</h3>
             <p>
               Solução premium para eventos de marca, lançamentos e confraternizações, com operação eficiente e visual
@@ -654,27 +893,65 @@
       <div class="sticky-wrap">
         <div class="pudim-stage">
           <div class="pudim-visual">
-            <video
-              class="pudim-video"
-              id="pudimVideo"
-              muted
-              playsinline
-              preload="metadata"
-              poster="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80"
-            >
-              <source src="assets/videos/Luxury_Pudim_Animation_Generation.mp4" type="video/mp4" />
-              Seu navegador não suporta vídeo em HTML5.
-            </video>
+            <div class="pudim-image-container">
+              <div class="pudim-img-wrapper img-under">
+                <img src="assets/images/pudins-cima.jpg" alt="Sabores variados de pudim Pudiel" />
+              </div>
+              <div class="pudim-img-wrapper img-over" id="pudimOver">
+                <img src="assets/images/pudim-caramelo.jpg" alt="Pudim com calda de caramelo Pudiel" />
+              </div>
+            </div>
           </div>
           <div class="showcase-copy">
-            <p class="eyebrow">Experiência visual</p>
-            <h3>Movimento suave no scroll, estilo editorial.</h3>
+            <p class="eyebrow">Experiência sensorial</p>
+            <h3>A essência do verdadeiro pudim gourmet.</h3>
             <p>
-              Esta seção simula a linguagem de sites premium: ao rolar a página, o produto ganha profundidade e leve
-              rotação, criando uma percepção sofisticada sem perder o minimalismo.
+              Uma textura incrivelmente cremosa e sedosa que derrete na boca, combinada com caldas artesanais exclusivas. Deslize a página para ver a variedade de sabores da nossa linha gourmet.
             </p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="galeria">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Nosso carrinho em ação</p>
+          <h2>Cada evento, uma nova história.</h2>
+          <p>
+            Do dia ensolarado à noite estrelada, nosso carrinho se adapta e encanta em qualquer cenário.
+          </p>
+        </div>
+        <div class="filmstrip">
+          <div class="filmstrip-item">
+            <img src="assets/images/carrinho-dia.jpg" alt="Carrinho Pudiel ao ar livre durante o dia" loading="lazy" />
+            <div class="filmstrip-caption"><span>Ao ar livre</span></div>
+          </div>
+          <div class="filmstrip-item">
+            <img src="assets/images/carrinho-noite.jpg" alt="Carrinho Pudiel iluminado à noite" loading="lazy" />
+            <div class="filmstrip-caption"><span>Noite estrelada</span></div>
+          </div>
+          <div class="filmstrip-item">
+            <img src="assets/images/carrinho-noite-cozy.jpg" alt="Carrinho Pudiel em ambiente aconchegante" loading="lazy" />
+            <div class="filmstrip-caption"><span>Ambiente cozy</span></div>
+          </div>
+          <div class="filmstrip-item">
+            <img src="assets/images/carrinho-tarde.jpg" alt="Carrinho Pudiel ao entardecer" loading="lazy" />
+            <div class="filmstrip-caption"><span>Entardecer</span></div>
+          </div>
+          <div class="filmstrip-item">
+            <img src="assets/images/carrinho-detalhe.jpg" alt="Detalhe do carrinho Pudiel" loading="lazy" />
+            <div class="filmstrip-caption"><span>Detalhes</span></div>
+          </div>
+          <div class="filmstrip-item">
+            <img src="assets/images/carrinho-menu.jpg" alt="Menu do carrinho Pudiel" loading="lazy" />
+            <div class="filmstrip-caption"><span>Menu exclusivo</span></div>
+          </div>
+        </div>
+        <p class="filmstrip-hint">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          Arraste para ver mais
+        </p>
       </div>
     </section>
 
@@ -686,14 +963,32 @@
         </div>
         <div class="steps">
           <div class="step">
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
             <strong>01 • Briefing</strong>
             <p>Entendemos o tipo de evento, quantidade de pessoas e estilo da montagem.</p>
           </div>
           <div class="step">
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="13.5" cy="6.5" r="2.5"/>
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                <path d="M17 11l2 2 4-4"/>
+              </svg>
+            </div>
             <strong>02 • Curadoria</strong>
             <p>Definimos sabores, apresentação e operação de serviço alinhados ao seu conceito.</p>
           </div>
           <div class="step">
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
             <strong>03 • Execução</strong>
             <p>Chegamos no horário, montamos a estação e entregamos uma experiência impecável.</p>
           </div>
@@ -709,11 +1004,11 @@
         </div>
         <div class="testimonials">
           <blockquote>
-            “Foi a atração mais comentada do casamento. Visual impecável e sabor inesquecível.”
+            "Foi a atração mais comentada do casamento. Visual impecável e sabor inesquecível."
             <footer>— Mariana e Felipe, noivos</footer>
           </blockquote>
           <blockquote>
-            “Trouxe sofisticação para o evento da empresa sem perder a praticidade. Equipe excelente.”
+            "Trouxe sofisticação para o evento da empresa sem perder a praticidade. Equipe excelente."
             <footer>— Carla M., coordenadora de marketing</footer>
           </blockquote>
         </div>
@@ -732,35 +1027,35 @@
             </p>
           </div>
           <div class="cta-actions">
-            <a class="btn btn-light" href="https://wa.me/5500000000000" target="_blank" rel="noreferrer">WhatsApp</a>
-            <a class="btn btn-outline-light" href="mailto:contato@pudimatelier.com.br">E-mail</a>
+            <a class="btn btn-light" href="https://wa.me/5561991711499" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a class="btn btn-outline-light" href="mailto:contato@pudiel.com.br">E-mail</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      Pudim Atelier • Pudim gourmet para casamentos, aniversarios e eventos corporativos.
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>Pudiel &bull; Pudim gourmet para eventos &mdash; Brasília, DF</span>
+      <div class="footer-links">
+        <a href="https://wa.me/5561991711499" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.553 4.122 1.522 5.86L.057 23.64l5.933-1.556A11.93 11.93 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.82a9.8 9.8 0 0 1-5.007-1.37l-.359-.213-3.724.976.994-3.631-.234-.372A9.77 9.77 0 0 1 2.18 12c0-5.422 4.398-9.82 9.82-9.82 5.422 0 9.82 4.398 9.82 9.82 0 5.422-4.398 9.82-9.82 9.82z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://www.instagram.com/pudieloficial" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12s.014 3.668.072 4.948c.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          Instagram
+        </a>
+      </div>
     </div>
   </footer>
 
   <script>
+    // ── Scroll showcase clip-path animation ──
     (function () {
-      const orb = document.getElementById("pudimOrb");
-      const video = document.getElementById("pudimVideo");
       const section = document.getElementById("experiencia");
       if (!section) return;
-
-      let videoReady = false;
-
-      if (video) {
-        // Required by some browsers so currentTime can be controlled.
-        video.addEventListener("loadedmetadata", () => {
-          videoReady = Number.isFinite(video.duration) && video.duration > 0;
-        });
-      }
 
       const update = () => {
         const rect = section.getBoundingClientRect();
@@ -768,16 +1063,10 @@
         const traveled = Math.min(Math.max(-rect.top, 0), Math.max(total, 1));
         const progress = traveled / Math.max(total, 1);
 
-        if (videoReady && video) {
-          const targetTime = progress * video.duration;
-          if (Number.isFinite(targetTime)) {
-            video.currentTime = targetTime;
-          }
-        } else if (orb) {
-          const rotate = -14 + progress * 30;
-          const scale = 0.92 + progress * 0.2;
-          const translateY = 14 - progress * 32;
-          orb.style.transform = `translateY(${translateY}px) scale(${scale}) rotate(${rotate}deg)`;
+        const pudimOver = document.getElementById("pudimOver");
+        if (pudimOver) {
+          const percentage = (1 - progress) * 100;
+          pudimOver.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
         }
       };
 
@@ -785,6 +1074,28 @@
       window.addEventListener("scroll", update, { passive: true });
       window.addEventListener("resize", update);
     })();
+
+    // ── Hamburger menu toggle ──
+    (function () {
+      const btn = document.getElementById("hamburgerBtn");
+      const nav = document.getElementById("mobileNav");
+      if (!btn || !nav) return;
+
+      btn.addEventListener("click", function () {
+        btn.classList.toggle("active");
+        nav.classList.toggle("open");
+        document.body.style.overflow = nav.classList.contains("open") ? "hidden" : "";
+      });
+    })();
+
+    function closeMobileNav() {
+      const btn = document.getElementById("hamburgerBtn");
+      const nav = document.getElementById("mobileNav");
+      if (btn) btn.classList.remove("active");
+      if (nav) nav.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
   </script>
 </body>
 </html>
